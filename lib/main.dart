@@ -10,7 +10,7 @@ void main() {
   Store<AppState> store = Store<AppState>(
     appReducer,
     initialState: AppState.initialState(),
-    middleware: [appMiddleware()],
+    middleware: [appStateMiddleware],
   );
   runApp(MyApp(
     store: store,
@@ -20,7 +20,10 @@ void main() {
 class MyApp extends StatelessWidget {
   final Store<AppState> store;
 
-  const MyApp({Key? key, required this.store}) : super(key: key);
+  const MyApp({
+    Key? key,
+    required this.store,
+  }) : super(key: key);
 
   // This widget is the root of your application.
   @override

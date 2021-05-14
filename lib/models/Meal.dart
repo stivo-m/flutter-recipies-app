@@ -26,17 +26,18 @@ class Meal {
 
   factory Meal.fromJson(Map<String, dynamic> json) {
     return Meal(
-      id: json['content']['details']['recipeId'] as String,
-      title: json['display']['displayName'] as String,
-      category: json['tracking-id'] as String,
+      id: json['content']['details']['recipeId'].toString(),
+      title: json['display']['displayName'].toString(),
+      category: json['tracking-id'].toString(),
       thumbnail:
-          json['content']['details']['images'][0]['hostedLargeUrl'] as String,
-      tags: json['tracking-id'] as String,
-      video: json['content']['videos']['snapshotUrl']['android'] as String,
-      description: json['content']['description']['text'] as String,
-      preparationSteps: json['content']['preparationSteps'],
+          json['content']['details']['images'][0]['hostedLargeUrl'].toString(),
+      tags: json['tracking-id'].toString(),
+      // video: json['content']['videos']['snapshotUrl']['android'].toString(),
+      video: "",
+      description: json['content']['description'].toString(),
+      preparationSteps: json['content']['preparationSteps'] ?? [],
       rating: json['content']['details']['rating'].toString(),
-      totalTime: json['content']['details']['totalTime'] as String,
+      totalTime: json['content']['details']['totalTime'].toString(),
     );
   }
 

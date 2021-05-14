@@ -32,26 +32,18 @@ class MealService implements BaseMealService {
   @override
   Future<List<Meal>> fetchMeals() async {
     List<Meal> _meals;
-    // var uri = Uri.https(API_HOST, API_ENDPOINT);
-    try {
-      var response = await _dio.get(
-        API_ENDPOINT,
-        queryParameters: {
-          "start": "0",
-          "limit": "18",
-          "tag": "list.recipe.popular"
-        },
-      );
+    var response = await _dio.get(
+      API_ENDPOINT,
+      queryParameters: {
+        "start": "0",
+        "limit": "18",
+        "tag": "list.recipe.popular"
+      },
+    );
 
-      // _meals = Meal.mealsFromSnapshot(
-      //   response.data['feed'],
-      // );
-
-      _meals = [];
-    } catch (e) {
-      print(e);
-      _meals = [];
-    }
+    _meals = Meal.mealsFromSnapshot(
+      response.data['feed'],
+    );
     return _meals;
   }
 }

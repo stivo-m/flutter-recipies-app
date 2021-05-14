@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:random_meal_generator/models/Meal.dart';
 
@@ -10,8 +12,17 @@ class MealCard extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    if (meal.title == 'Korean Pork Chops') {
+      var text = meal.description;
+
+      print(text);
+    }
+
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10.0),
+      margin: const EdgeInsets.symmetric(
+        vertical: 10.0,
+        horizontal: 20.0,
+      ),
       height: 180,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
@@ -36,25 +47,103 @@ class MealCard extends StatelessWidget {
             image: NetworkImage(meal.thumbnail),
             fit: BoxFit.cover),
       ),
-      child: Stack(
-        children: [
-          Align(
-            alignment: Alignment.center,
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 5.0,
-              ),
-              child: Text(
-                meal.title,
-                style: TextStyle(
-                  fontSize: 20,
+      child: TextButton(
+        onPressed: () {},
+        child: Stack(
+          children: [
+            Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 5.0,
                 ),
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
+                child: Text(
+                  meal.title,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
-          )
-        ],
+            Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: EdgeInsets.only(
+                  top: 50,
+                ),
+                child: Text(
+                  meal.description.toString(),
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15.0,
+                  vertical: 10.0,
+                ),
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: Colors.yellowAccent,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            meal.rating.toString(),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.alarm_sharp,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            meal.totalTime.toString(),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
