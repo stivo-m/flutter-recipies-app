@@ -13,7 +13,6 @@ class MealDetails extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    print(meal.video?['videoUrls']['android']);
     return Scaffold(
       appBar: AppBar(
         title: Text(

@@ -3,8 +3,6 @@ import 'package:random_meal_generator/redux/app_state.dart';
 
 AppState appReducer(AppState prevState, dynamic action) {
   if (action is FetchMeals) {
-    print("----------------------------");
-    print("Fetch meals was dispatched");
     return AppState.copyWith(
       state: prevState,
       loading: true,
@@ -12,9 +10,6 @@ AppState appReducer(AppState prevState, dynamic action) {
     );
   }
   if (action is MealsFetched) {
-    print("----------------------------");
-    print("LOADING STATUS FROM MEALS FETCHED ACTION: .... " +
-        prevState.loading.toString());
     return AppState.copyWith(
       state: prevState,
       loading: false,
