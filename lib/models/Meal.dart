@@ -1,8 +1,8 @@
 class Meal {
-  final String id, title, category, thumbnail, tags, video, totalTime, rating;
+  final String id, title, category, thumbnail, tags, totalTime, rating;
 
   final List<dynamic> preparationSteps;
-  final dynamic description;
+  final dynamic description, video;
 
   Meal({
     required this.id,
@@ -25,8 +25,7 @@ class Meal {
       thumbnail:
           json['content']['details']['images'][0]['hostedLargeUrl'].toString(),
       tags: json['tracking-id'].toString(),
-      // video: json['content']['videos']['snapshotUrl']['android'].toString(),
-      video: "",
+      video: json['content']['videos'],
       description: json['content']['description'],
       preparationSteps: json['content']['preparationSteps'] ?? [],
       rating: json['content']['details']['rating'].toString(),

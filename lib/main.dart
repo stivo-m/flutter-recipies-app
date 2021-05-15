@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
     return StoreProvider(
       store: store,
       child: MaterialApp(
-        title: 'Meal List Screen',
+        title: APP_TITLE,
         theme: ThemeData(
           primarySwatch: Colors.blue,
           primaryColor: Colors.white,

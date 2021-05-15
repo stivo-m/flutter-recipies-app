@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:random_meal_generator/global/constants/strings.dart';
 import 'package:random_meal_generator/models/Meal.dart';
 
 class MealCard extends StatelessWidget {
@@ -40,7 +41,8 @@ class MealCard extends StatelessWidget {
             fit: BoxFit.cover),
       ),
       child: TextButton(
-        onPressed: () {},
+        onPressed: () =>
+            Navigator.of(context).pushNamed(DETAILS_SCREEN, arguments: meal),
         child: Stack(
           children: [
             Align(
