@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:random_meal_generator/models/Meal.dart';
 
@@ -12,12 +10,6 @@ class MealCard extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    if (meal.title == 'Korean Pork Chops') {
-      var text = meal.description;
-
-      print(text);
-    }
-
     return Container(
       margin: const EdgeInsets.symmetric(
         vertical: 10.0,
@@ -52,10 +44,11 @@ class MealCard extends StatelessWidget {
         child: Stack(
           children: [
             Align(
-              alignment: Alignment.center,
+              alignment: Alignment.topCenter,
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: 5.0,
+                  horizontal: 15.0,
+                  vertical: 10.0,
                 ),
                 child: Text(
                   meal.title,
@@ -72,17 +65,19 @@ class MealCard extends StatelessWidget {
             Align(
               alignment: Alignment.center,
               child: Padding(
-                padding: EdgeInsets.only(
-                  top: 50,
+                padding: EdgeInsets.symmetric(
+                  horizontal: 15.0,
+                  vertical: 10.0,
                 ),
                 child: Text(
-                  meal.description.toString(),
+                  meal.description?['text']?.toString() ?? "No description",
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 15,
                     color: Colors.white,
                   ),
+                  maxLines: 3,
                   overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.left,
                 ),
               ),
             ),

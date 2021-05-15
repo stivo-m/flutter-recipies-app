@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
         title: 'Meal List Screen',
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          primaryColor: Colors.white,
         ),
         initialRoute: MEAL_SCREEN,
         onGenerateRoute: RouteGenerator.generateRoute,

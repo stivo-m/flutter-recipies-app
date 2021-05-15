@@ -9,8 +9,24 @@ class MealListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(APP_TITLE),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.restaurant_rounded),
+            SizedBox(
+              width: 10.5,
+            ),
+            Text(APP_TITLE),
+          ],
+        ),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.more_vert),
+            onPressed: () {},
+          )
+        ],
+        elevation: 0,
       ),
       body: StoreBuilder<AppState>(
           onInit: (store) => store.dispatch(FetchMeals()),
@@ -28,13 +44,13 @@ class MealListScreen extends StatelessWidget {
                     height: 200,
                     child: Column(
                       children: [
-                        Text("No meals found at the moment"),
+                        Text(NO_MEALS_FOUND_TEXT),
                         ElevatedButton(
                           onPressed: () {
                             StoreProvider.of<AppState>(context)
                                 .dispatch(FetchMeals());
                           },
-                          child: Text('Fetch Meals'),
+                          child: Text(GET_MEAL_TEXT),
                         )
                       ],
                     ),
