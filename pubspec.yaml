@@ -31,12 +31,12 @@ dependencies:
   dio: ^4.0.0
   redux: ^5.0.0
   flutter_redux:
-  mockito: ^5.0.7
   connectivity: ^3.0.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mockito: ^5.0.7
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

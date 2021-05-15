@@ -20,12 +20,6 @@ class MealListScreen extends StatelessWidget {
           ],
         ),
         centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.more_vert),
-            onPressed: () {},
-          )
-        ],
         elevation: 0,
       ),
       body: SafeArea(

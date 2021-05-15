@@ -20,12 +20,6 @@ class MealDetails extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.more_vert),
-            onPressed: () {},
-          )
-        ],
         elevation: 0,
       ),
       body: SafeArea(

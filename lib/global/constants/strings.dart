@@ -8,5 +8,3 @@ const String PREPARATION_STEPS_TEXT = "Preparation Steps";
 // Routs
 const String MEAL_SCREEN = '/';
 const String DETAILS_SCREEN = '/recipie';
-const String SETTINGS = '/settings';
-const String SPLASH_SCREEN = '/splash';
