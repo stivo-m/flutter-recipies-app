@@ -7,6 +7,8 @@ AppState appReducer(AppState prevState, dynamic action) {
       state: prevState,
       loading: true,
       meals: [],
+      start: 0,
+      limit: 20,
     );
   }
   if (action is MealsFetched) {
@@ -14,6 +16,8 @@ AppState appReducer(AppState prevState, dynamic action) {
       state: prevState,
       loading: false,
       meals: action.meals,
+      limit: action.limit,
+      start: action.limit,
     );
   }
 
@@ -21,5 +25,7 @@ AppState appReducer(AppState prevState, dynamic action) {
     state: prevState,
     meals: prevState.meals,
     loading: false,
+    start: prevState.start,
+    limit: prevState.limit,
   );
 }

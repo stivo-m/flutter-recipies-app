@@ -1,5 +1,5 @@
 import 'package:random_meal_generator/models/Meal.dart';
 
 abstract class BaseMealService {
-  Future<List<Meal>> fetchMeals();
+  Future<List<Meal>> fetchMeals(int start, int limit);
 }

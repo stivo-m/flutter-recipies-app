@@ -15,13 +15,13 @@ class MealService implements BaseMealService {
   }
 
   @override
-  Future<List<Meal>> fetchMeals() async {
+  Future<List<Meal>> fetchMeals(int start, int limit) async {
     List<Meal> _meals;
     var response = await _dio.get(
       API_ENDPOINT,
       queryParameters: {
-        "start": "0",
-        "limit": "18",
+        "start": start.toString(),
+        "limit": limit.toString(),
         "tag": "list.recipe.popular"
       },
     );

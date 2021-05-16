@@ -59,9 +59,32 @@ class MealListScreen extends StatelessWidget {
                   child: ListView.builder(
                     itemCount: store.state.meals.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return MealCard(
-                        meal: store.state.meals[index],
-                      );
+                      if (index == store.state.meals.length - 1) {
+                        return Container(
+                          height: 280,
+                          child: Column(
+                            children: [
+                              MealCard(
+                                meal: store.state.meals[index],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              TextButton.icon(
+                                onPressed: () =>
+                                    StoreProvider.of<AppState>(context)
+                                        .dispatch(FetchMeals()),
+                                icon: Icon(Icons.arrow_circle_down),
+                                label: Text('Fetch more recipies'),
+                              )
+                            ],
+                          ),
+                        );
+                      } else {
+                        return MealCard(
+                          meal: store.state.meals[index],
+                        );
+                      }
                     },
                   ),
                 );

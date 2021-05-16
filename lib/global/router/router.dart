@@ -10,24 +10,49 @@ class RouteGenerator {
 
     switch (settings.name) {
       case MEAL_SCREEN:
-        return MaterialPageRoute(
-          builder: (context) => MealListScreen(),
+        return BouncyPageRouteBuilder(
+          screen: MealListScreen(),
         );
       case DETAILS_SCREEN:
-        return MaterialPageRoute(
-          builder: (context) => MealDetails(
-            meal: args as Meal,
-          ),
+        return BouncyPageRouteBuilder(
+          screen: MealDetails(meal: args as Meal),
         );
       default:
-        return errorRoute();
+        return _errorRoute();
     }
   }
 
 //errors such as 404
-  static Route<dynamic> errorRoute() {
-    return MaterialPageRoute(
-      builder: (context) => MealListScreen(),
+  static Route<dynamic> _errorRoute() {
+    return BouncyPageRouteBuilder(
+      screen: MealListScreen(),
     );
   }
+}
+
+class BouncyPageRouteBuilder extends PageRouteBuilder {
+  final Widget screen;
+  BouncyPageRouteBuilder({required this.screen})
+      : super(
+          transitionDuration: Duration(milliseconds: 800),
+          transitionsBuilder: (BuildContext context,
+              Animation<double> animation,
+              Animation<double> secondAnimation,
+              Widget child) {
+            animation =
+                CurvedAnimation(parent: animation, curve: Curves.elasticInOut);
+            return ScaleTransition(
+              scale: animation,
+              alignment: Alignment.center,
+              child: child,
+            );
+          },
+          pageBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondAnimation,
+          ) {
+            return screen;
+          },
+        );
 }

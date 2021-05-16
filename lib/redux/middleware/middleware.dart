@@ -6,11 +6,23 @@ void appStateMiddleware(
     Store<AppState> store, dynamic action, NextDispatcher next) async {
   if (action is FetchMeals) {
     try {
-      mealService.fetchMeals().then((_meals) {
-        store.dispatch(MealsFetched(_meals));
+      mealService
+          .fetchMeals(
+        store.state.start,
+        store.state.limit,
+      )
+          .then((_meals) {
+        // next limit should add 20 items.
+        // this means the store.state.start should be 0
+        // and store.state.limit = store.state.start + 20;
+        store.dispatch(MealsFetched(
+          _meals,
+          store.state.limit,
+          store.state.limit + 20,
+        ));
       });
     } catch (e) {
-      store.dispatch(MealsFetched([]));
+      store.dispatch(MealsFetched([], 0, 20));
     }
   }
   next(action);

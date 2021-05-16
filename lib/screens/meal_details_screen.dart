@@ -103,7 +103,7 @@ class MealDetails extends StatelessWidget {
                   horizontal: 20.0,
                 ),
                 child: Text(
-                  meal.description?['mobileSectionName'],
+                  meal.description?['mobileSectionName'] ?? "Description",
                   style: TextStyle(
                     fontSize: 25.0,
                     fontWeight: FontWeight.w500,
@@ -118,7 +118,7 @@ class MealDetails extends StatelessWidget {
                   horizontal: 20.0,
                 ),
                 child: Text(
-                  meal.description?['text'].toString() ?? "No description",
+                  meal.description?['text']?.toString() ?? "No description",
                   style: TextStyle(
                     fontSize: 16,
                     wordSpacing: 2.0,
@@ -148,7 +148,9 @@ class MealDetails extends StatelessWidget {
                   vertical: 10.0,
                 ),
                 child: Text(
-                  meal.preparationSteps.join(),
+                  meal.preparationSteps.length > 0
+                      ? meal.preparationSteps.join()
+                      : "No steps outlined",
                   style: TextStyle(
                     fontSize: 16,
                     wordSpacing: 2.0,
