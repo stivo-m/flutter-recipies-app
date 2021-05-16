@@ -7,7 +7,7 @@ void main() {
   group("Tests for fetching meals from the API.", () {
     test("When called, should return a List of Meals", () async {
       MockMealService _mealService = MockMealService();
-      var meals = await _mealService.fetchMeals();
+      var meals = await _mealService.fetchMeals(0, 20);
 
       expect(1, meals.length);
     });
@@ -35,8 +35,8 @@ void main() {
         "If Meals Fetched Action is dispatched, store should not be loading and should have a list of meals",
         () async {
           MockMealService _mockMealService = MockMealService();
-          var meals = await _mockMealService.fetchMeals();
-          await _store.dispatch(MealsFetched(meals));
+          var meals = await _mockMealService.fetchMeals(0, 20);
+          await _store.dispatch(MealsFetched(meals, 0, 20));
 
           expect(1, _store.state.meals.length);
           expect(false, _store.state.loading);
