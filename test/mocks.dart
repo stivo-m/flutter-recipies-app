@@ -4,7 +4,7 @@ import 'package:random_meal_generator/services/meals/base.dart';
 import 'package:redux/redux.dart';
 
 class MockMealService extends Mock implements BaseMealService {
-  Future<List<Meal>> fetchMeals() async {
+  Future<List<Meal>> fetchMeals(int start, int limit) async {
     return Future.delayed(
       Duration(seconds: 3),
       () => [
