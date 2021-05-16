@@ -42,7 +42,8 @@ class MealDetails extends StatelessWidget {
                         BlendMode.multiply,
                       ),
                       image: NetworkImage(meal.thumbnail),
-                      fit: BoxFit.cover),
+                      fit: BoxFit.cover,
+                  ),
                 ),
               ),
               Container(
